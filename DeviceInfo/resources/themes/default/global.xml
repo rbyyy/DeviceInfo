@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Global>
+    <!--所有字体-->
+    <Font id="system_12" name="system" size="12" default="true"/>
+    <Font id="system_14" name="system" size="14"/>
+    <Font id="system_16" name="system" size="16"/>
+    <Font id="system_18" name="system" size="18"/>
+    <Font id="system_20" name="system" size="20"/>
+    <Font id="system_22" name="system" size="22"/>
+    <Font id="system_bold_12" name="system" size="12" bold="true"/>
+    <Font id="system_bold_14" name="system" size="14" bold="true"/>
+    <Font id="system_bold_16" name="system" size="16" bold="true"/>
+    <Font id="system_bold_18" name="system" size="18" bold="true"/>
+    <Font id="system_bold_20" name="system" size="20" bold="true"/>
+    <Font id="system_bold_22" name="system" size="22" bold="true"/>
+    <Font id="arial_12" name="arial" size="12"/>
+    <Font id="arial_14" name="arial" size="14"/>
+    <Font id="arial_16" name="arial" size="16"/>
+    <Font id="arial_18" name="arial" size="18"/>
+    <Font id="arial_20" name="arial" size="20"/>
+    <Font id="arial_22" name="arial" size="22"/>
+    <Font id="arial_bold_12" name="arial" size="12" bold="true"/>
+    <Font id="arial_bold_14" name="arial" size="14" bold="true"/>
+    <Font id="arial_bold_16" name="arial" size="16" bold="true"/>
+    <Font id="arial_bold_18" name="arial" size="18" bold="true"/>
+    <Font id="arial_bold_20" name="arial" size="20" bold="true"/>
+    <Font id="arial_bold_22" name="arial" size="22" bold="true"/>
+    <Font id="system_underline_12" name="system" size="12" underline="true"/>
+    <Font id="system_underline_14" name="system" size="14" underline="true"/>
+    <Font id="system_underline_16" name="system" size="16" underline="true"/>
+    <Font id="system_underline_18" name="system" size="18" underline="true"/>
+    <Font id="system_underline_20" name="system" size="20" underline="true"/>
+    <Font id="system_underline_22" name="system" size="22" underline="true"/>
+
+    <!--一些常规固定颜色-->
+    <TextColor name="white" value="#ffffffff"/>
+    <TextColor name="black" value="#ff000000"/>
+    <TextColor name="darkcolor" value="#ff333333"/>
+    <TextColor name="lightcolor" value="#ff888888"/>
+    <TextColor name="gray" value="#ff8e99a6"/>
+    <TextColor name="light_gray" value="#ffa8a8a8"/>
+    <TextColor name="dark_gray" value="#ff72797f"/>
+    <TextColor name="green" value="#ff00bb96"/>
+    <TextColor name="light_green" value="#ff21c7a6"/>
+    <TextColor name="blue" value="#ff006DD9"/>
+    <TextColor name="red" value="#ffC63535"/>
+
+    <!--文字色值，不带透明层-->
+    <TextColor name="textdefaultcolor" value="#ff333333"/>
+    <TextColor name="textdefaultdisablecolor" value="#ffa1aebc"/>
+
+    <!--窗口常用背景色-->
+    <TextColor name="bk_main_wnd_title" value="#ff238efa"/>
+    <TextColor name="bk_main_wnd_search" value="#ff1e7ad7"/>
+    <TextColor name="bk_wnd_darkcolor" value="#fff0f2f5"/>
+    <TextColor name="bk_wnd_lightcolor" value="#ffffffff"/>
+    <TextColor name="bk_menuitem_hovered" value="#ffe1e6eb"/>
+    <TextColor name="bk_menuitem_selected" value="#ffced4db"/>
+    <TextColor name="bk_listitem_hovered" value="#fff0f2f5"/>
+    <TextColor name="bk_listitem_selected" value="#ffe4e7eb"/>
+
+    <!--置顶项的背景颜色-->
+    <TextColor name="bk_topitem_normal" value="#ffffffe0"/>
+    <TextColor name="bk_topitem_hovered" value="#ffffffeb"/>
+    <TextColor name="bk_topitem_selected" value="#fffafacd"/>
+
+    <!--进度条专用-->
+    <TextColor name="bk_progress_bk" value="#ffe3ecf5"/>
+    <TextColor name="bk_progress_progress" value="#ff2aceae"/>
+
+    <!--背景色值，半透明-->
+    <TextColor name="transbkblack" value="#80000000"/>
+
+    <!--第一级分割线，较深-->
+    <TextColor name="splitline_level1" value="#ffd2d4d6"/>
+
+    <!--第二级分割线，较浅-->
+    <TextColor name="splitline_level2" value="#ffebedf0"/>
+
+    <!--调色板色值-->
+    <TextColor name="color_palette1" value="#ffff2600"/>
+    <TextColor name="color_palette2" value="#ffffeb00"/>
+    <TextColor name="color_palette3" value="#ff61ed00"/>
+    <TextColor name="color_palette4" value="#ff00b4ff"/>
+    <TextColor name="color_palette5" value="#ffa100ff"/>
+    <TextColor name="color_palette6" value="#ff000000"/>
+    <TextColor name="color_palette7" value="#ff545454"/>
+    <TextColor name="color_palette8" value="#ffa8a8a8"/>
+    <TextColor name="color_palette9" value="#ffffffff"/>
+
+    <!--字体大小-->
+    <Class name="font_title" font="system_14"/>
+</Global>
