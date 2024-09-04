@@ -3,6 +3,13 @@
 #include <map>
 #include <functional>
 
+/*
+* int: status code
+* std::string: response body
+* std::string: error message
+*/
+using BaseResponse = std::function<void(int, std::string, std::string)>;
+
 class DOBaseRequest
 {
 public:
@@ -16,11 +23,11 @@ public:
 	virtual std::multimap<std::string, std::string> CustomParameters() { return {}; };
 	virtual int CustomTimeout() { return 5; }
 
-	void Execute(std::function<void(int, std::string)> callback);
+	void Execute(BaseResponse callback);
 
 private:
-	void GetRequest(std::function<void(int, std::string)> callback);
-	void PostRequest(std::function<void(int, std::string)> callback);
+	void GetRequest(BaseResponse callback);
+	void PostRequest(BaseResponse callback);
 
 };
 

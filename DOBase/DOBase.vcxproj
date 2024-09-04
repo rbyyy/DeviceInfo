@@ -153,8 +153,6 @@
     <ClInclude Include="DOHttpManager.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="TestHttpManage.h" />
-    <ClInclude Include="TestHttpTask.h" />
     <ClInclude Include="TestRequest.h" />
   </ItemGroup>
   <ItemGroup>
@@ -166,8 +164,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="TestHttpManage.cpp" />
-    <ClCompile Include="TestHttpTask.cpp" />
     <ClCompile Include="TestRequest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

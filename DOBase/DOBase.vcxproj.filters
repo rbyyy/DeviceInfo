@@ -30,12 +30,6 @@
     <ClInclude Include="TestRequest.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="TestHttpManage.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="TestHttpTask.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="DOBaseRequest.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -48,12 +42,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="TestRequest.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="TestHttpManage.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="TestHttpTask.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="DOBaseRequest.cpp">

@@ -16,7 +16,7 @@ std::string DOBaseRequest::Path()
 	return std::string();
 }
 
-void DOBaseRequest::Execute(std::function<void(int, std::string)> callback)
+void DOBaseRequest::Execute(BaseResponse callback)
 {
 	std::string method = Method();
 	assert(!method.empty());
@@ -32,7 +32,7 @@ void DOBaseRequest::Execute(std::function<void(int, std::string)> callback)
 }
 
 #pragma region Private
-void DOBaseRequest::GetRequest(std::function<void(int, std::string)> callback)
+void DOBaseRequest::GetRequest(BaseResponse callback)
 {
 	std::string url = Url();
 	assert(!url.empty());
@@ -50,14 +50,21 @@ void DOBaseRequest::GetRequest(std::function<void(int, std::string)> callback)
 	httplib::Headers headers;
 	headers.insert(customHeaders.begin(), customHeaders.end());
 	auto res = cli.Get("/" + path, headers);
-	assert(res);
 	if (callback)
 	{
-		callback(res->status, res->body);
+		if (res)
+		{
+			callback(res->status, res->body, "");
+		}
+		else {
+			auto err = res.error();
+			std::string errorMsg = httplib::to_string(err);
+			callback(-1, "", errorMsg);
+		}
 	}
 }
 
-void DOBaseRequest::PostRequest(std::function<void(int, std::string)> callback)
+void DOBaseRequest::PostRequest(BaseResponse callback)
 {
 	std::string url = Url();
 	assert(!url.empty());
@@ -75,10 +82,17 @@ void DOBaseRequest::PostRequest(std::function<void(int, std::string)> callback)
 	headers.insert(customHeaders.begin(), customHeaders.end());
 	httplib::Params customParameters = CustomParameters();
 	auto res = cli.Post(path, headers, customParameters);
-	assert(res);
 	if (callback)
 	{
-		callback(res->status, res->body);
+		if (res)
+		{
+			callback(res->status, res->body, "");
+		}
+		else {
+			auto err = res.error();
+			std::string errorMsg = httplib::to_string(err);
+			callback(-1, "", errorMsg);
+		}
 	}
 }
 #pragma endregion

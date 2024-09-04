@@ -1,6 +1,5 @@
 #include "DOHttpManager.h"
 #include <mutex>
-#include "DOBaseRequest.h"
 
 static DOHttpManager* instance = nullptr;
 static std::mutex mtx;
@@ -17,7 +16,7 @@ DOHttpManager* DOHttpManager::GetInstance()
 	return instance;
 }
 
-void DOHttpManager::HttpRequest(DOBaseRequest* request, std::function<void(int, std::string)> callback)
+void DOHttpManager::HttpRequest(DOBaseRequest* request, BaseResponse callback)
 {
 	AddTask([=]() {
 		if (nullptr != request)

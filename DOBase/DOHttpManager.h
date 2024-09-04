@@ -6,7 +6,7 @@
 #include <mutex>
 #include <condition_variable>
 
-class DOBaseRequest;
+#include "DOBaseRequest.h"
 
 class DLL_API DOHttpManager
 {
@@ -24,7 +24,7 @@ public:
 		m_Condition.notify_one();
 	}
 
-	void HttpRequest(DOBaseRequest* request, std::function<void(int, std::string)> callback);
+	void HttpRequest(DOBaseRequest* request, BaseResponse callback);
 	void Stop();
 
 private:

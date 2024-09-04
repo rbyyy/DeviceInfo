@@ -62,14 +62,22 @@ void AppMainWindow::OnBtnTestClick(ui::EventArgs* args)
 	//wss << L"Button clicked";
 	//m_pLabel->SetText(wss.str().c_str());
 	//MessageBox(m_hWnd, wss.str().c_str(), L"Info", MB_OK);
+    for (size_t i = 0; i < 10; i++)
+    {
+        TestRequest* testRequest = new TestRequest();
+		long long ptr = (long long)testRequest;
+		OutputDebugStringW(std::to_wstring(ptr).c_str());
 
-    TestRequest *testRequest = new TestRequest();
-	DOHttpManager::GetInstance()->HttpRequest(testRequest, [=](int code, std::string res) {
-		unsigned long tId = GetCurrentThreadId();
-		std::wstring wres(res.begin(), res.end());
-		this->SetLabelContent(wres);
-		delete testRequest;
-	});
+        DOHttpManager::GetInstance()->HttpRequest(testRequest, [=](int code, std::string res, std::string error) {
+            unsigned long tId = GetCurrentThreadId();
+            std::wstring wres(res.begin(), res.end());
+            this->SetLabelContent(wres);
+            long long ptr = (long long)testRequest;
+            OutputDebugStringW(std::to_wstring(ptr).c_str());
+            delete testRequest;
+        });
+    }
+    
 
 	/*m_vecTestRequest.push(testRequest);
 
