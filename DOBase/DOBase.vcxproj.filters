@@ -36,6 +36,9 @@
     <ClInclude Include="DOHttpManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="DOStringUtil.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -48,6 +51,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="DOHttpManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DOStringUtil.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

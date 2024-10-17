@@ -1,0 +1,186 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>SSL_set1_server_cert_type</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#NOTES">NOTES</a></li>
+  <li><a href="#RETURN-VALUES">RETURN VALUES</a></li>
+  <li><a href="#EXAMPLES">EXAMPLES</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#HISTORY">HISTORY</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>SSL_set1_client_cert_type, SSL_set1_server_cert_type, SSL_CTX_set1_client_cert_type, SSL_CTX_set1_server_cert_type, SSL_get0_client_cert_type, SSL_get0_server_cert_type, SSL_CTX_get0_client_cert_type, SSL_CTX_get0_server_cert_type - certificate type (RFC7250) support</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> <span class="comment">#include &lt;openssl/ssl.h&gt;</span>
+ 
+ <span class="keyword">int</span> <span class="variable">SSL_set1_client_cert_type</span><span class="operator">(</span><span class="variable">SSL</span> <span class="variable">*s</span><span class="operator">,</span> <span class="variable">const</span> <span class="variable">unsigned</span> <span class="variable">char</span> <span class="variable">*val</span><span class="operator">,</span> <span class="variable">size_t</span> <span class="variable">len</span><span class="operator">);</span>
+ <span class="keyword">int</span> <span class="variable">SSL_set1_server_cert_type</span><span class="operator">(</span><span class="variable">SSL</span> <span class="variable">*s</span><span class="operator">,</span> <span class="variable">const</span> <span class="variable">unsigned</span> <span class="variable">char</span> <span class="variable">*val</span><span class="operator">,</span> <span class="variable">size_t</span> <span class="variable">len</span><span class="operator">);</span>
+ <span class="keyword">int</span> <span class="variable">SSL_CTX_set1_client_cert_type</span><span class="operator">(</span><span class="variable">SSL_CTX</span> <span class="variable">*ctx</span><span class="operator">,</span> <span class="variable">const</span> <span class="variable">unsigned</span> <span class="variable">char</span> <span class="variable">*val</span><span class="operator">,</span> <span class="variable">size_t</span> <span class="variable">len</span><span class="operator">);</span>
+ <span class="keyword">int</span> <span class="variable">SSL_CTX_set1_server_cert_type</span><span class="operator">(</span><span class="variable">SSL_CTX</span> <span class="variable">*ctx</span><span class="operator">,</span> <span class="variable">const</span> <span class="variable">unsigned</span> <span class="variable">char</span> <span class="variable">*val</span><span class="operator">,</span> <span class="variable">size_t</span> <span class="variable">len</span><span class="operator">);</span>
+ <span class="keyword">int</span> <span class="variable">SSL_get0_client_cert_type</span><span class="operator">(</span><span class="variable">const</span> <span class="variable">SSL</span> <span class="variable">*s</span><span class="operator">,</span> <span class="variable">unsigned</span> <span class="variable">char</span> <span class="operator">**</span><span class="variable">val</span><span class="operator">,</span> <span class="variable">size_t</span> <span class="variable">*len</span><span class="operator">);</span>
+ <span class="keyword">int</span> <span class="variable">SSL_get0_server_cert_type</span><span class="operator">(</span><span class="variable">const</span> <span class="variable">SSL</span> <span class="variable">*s</span><span class="operator">,</span> <span class="variable">unsigned</span> <span class="variable">char</span> <span class="operator">**</span><span class="variable">val</span><span class="operator">,</span> <span class="variable">size_t</span> <span class="variable">*len</span><span class="operator">);</span>
+ <span class="keyword">int</span> <span class="variable">SSL_CTX_get0_client_cert_type</span><span class="operator">(</span><span class="variable">const</span> <span class="variable">SSL_CTX</span> <span class="variable">*ctx</span><span class="operator">,</span> <span class="variable">unsigned</span> <span class="variable">char</span> <span class="operator">**</span><span class="variable">val</span><span class="operator">,</span> <span class="variable">size_t</span> <span class="variable">*len</span><span class="operator">);</span>
+ <span class="keyword">int</span> <span class="variable">SSL_CTX_get0_server_cert_type</span><span class="operator">(</span><span class="variable">const</span> <span class="variable">SSL_CTX</span> <span class="variable">*s</span><span class="operator">,</span> <span class="variable">unsigned</span> <span class="variable">char</span> <span class="operator">**</span><span class="variable">val</span><span class="operator">,</span> <span class="variable">size_t</span> <span class="variable">*len</span><span class="operator">);</span>
+</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>The SSL_set1_client_cert_type() and SSL_CTX_set1_client_cert_type() functions set the values for the client certificate type extension. The SSL_get0_client_cert_type() and SSL_CTX_get0_client_cert_type() functions retrieve the local values to be used in the client certificate type extension.</p>
+
+<p>The SSL_set1_server_cert_type() and SSL_CTX_set1_server_cert_type() functions set the values for the server certificate type extension. The SSL_get0_server_cert_type() and SSL_CTX_get0_server_cert_type() functions retrieve the local values to be used in the server certificate type extension.</p>
+
+<h1 id="NOTES">NOTES</h1>
+
+<p>The certificate type extensions are used to negotiate the certificate type to be used in the handshake. These extensions let each side know what its peer is able to accept.</p>
+
+<p>The client certificate type is sent from the client to the server to indicate what certificate types the client is able to present. Values are configured in preference order. On the server, this setting determines which certificate types the server is willing to accept. The server ultimately chooses what type to request (if any) from the values that are mutually supported. By default (if no explicit settings are specified), only X.509 certificates are supported.</p>
+
+<p>The server certificate type is sent from the client to the server to indicate what certificate types the client accepts. Values are configured in preference order. On the server, this setting determines which certificate types the server is willing to present. The server ultimately chooses what type to use from the values that are mutually supported. By default (if no explicit settings are specified), only X.509 certificates are supported.</p>
+
+<p>Having RPK specified first means that side will attempt to send (or request) RPKs if its peer also supports RPKs, otherwise X.509 certificate will be used if both have specified that (or have not configured these options).</p>
+
+<p>The two supported values in the <b>val</b> array are:</p>
+
+<dl>
+
+<dt id="TLSEXT_cert_type_x509">TLSEXT_cert_type_x509</dt>
+<dd>
+
+<p>Which corresponds to an X.509 certificate normally used in TLS.</p>
+
+</dd>
+<dt id="TLSEXT_cert_type_rpk">TLSEXT_cert_type_rpk</dt>
+<dd>
+
+<p>Which corresponds to a raw public key.</p>
+
+</dd>
+</dl>
+
+<p>If <b>val</b> is set to a non-NULL value, then the extension is sent in the handshake. If b&lt;val&gt; is set to a NULL value (and <b>len</b> is 0), then the extension is disabled. The default value is NULL, meaning the extension is not sent, and X.509 certificates are used in the handshake.</p>
+
+<p>Raw public keys may be used in place of certificates when specified in the certificate type and negotiated. Raw public keys have no subject, issuer, validity dates or digital signature.</p>
+
+<p>Use the <a href="../man3/SSL_get_negotiated_client_cert_type.html">SSL_get_negotiated_client_cert_type(3)</a> and <a href="../man3/SSL_get_negotiated_server_cert_type.html">SSL_get_negotiated_server_cert_type(3)</a> functions to get the negotiated cert type values (at the conclusion of the handshake, or in callbacks that happen after the TLS ServerHello has been processed).</p>
+
+<h1 id="RETURN-VALUES">RETURN VALUES</h1>
+
+<p>All functions return 1 on success and 0 on failure.</p>
+
+<p>The memory returned from the get0 functions must not be freed.</p>
+
+<h1 id="EXAMPLES">EXAMPLES</h1>
+
+<p>To use raw public keys on the server, set up the SSL_CTX and SSL as follows:</p>
+
+<pre><code> <span class="variable">SSL_CTX</span> <span class="variable">*ctx</span><span class="operator">;</span>
+ <span class="variable">SSL</span> <span class="variable">*ssl</span><span class="operator">;</span>
+ <span class="variable">unsigned</span> <span class="variable">char</span> <span class="variable">cert_type</span><span class="operator">[]</span> <span class="operator">=</span> <span class="operator">{</span> <span class="variable">TLSEXT_cert_type_rpk</span><span class="operator">,</span> <span class="variable">TLSEXT_cert_type_x509</span> <span class="operator">}</span><span class="operator">;</span>
+ <span class="variable">EVP_PKEY</span> <span class="variable">*rpk</span><span class="operator">;</span>
+ 
+ <span class="regex">/* Assign rpk to an EVP_PKEY from a file or other means */</span>
+ 
+ <span class="keyword">if</span> <span class="operator">((</span><span class="variable">ctx</span> <span class="operator">=</span> <span class="variable">SSL_CTX_new</span><span class="operator">(</span><span class="variable">TLS_server_method</span><span class="operator">()))</span> <span class="operator">==</span> <span class="variable">NULL</span><span class="operator">)</span>
+     <span class="operator">/*</span> <span class="variable">error</span> <span class="operator">*/</span>
+ <span class="keyword">if</span> <span class="operator">((</span><span class="variable">ssl</span> <span class="operator">=</span> <span class="variable">SSL_new</span><span class="operator">(</span><span class="variable">ctx</span><span class="operator">))</span> <span class="operator">==</span> <span class="variable">NULL</span><span class="operator">)</span>
+     <span class="operator">/*</span> <span class="variable">error</span> <span class="operator">*/</span>
+ <span class="keyword">if</span> <span class="operator">(!</span><span class="variable">SSL_set1_server_cert_type</span><span class="operator">(</span><span class="variable">ssl</span><span class="operator">,</span> <span class="variable">cert_type</span><span class="operator">,</span> <span class="variable">sizeof</span><span class="operator">(</span><span class="variable">cert_type</span><span class="operator">)))</span>
+     <span class="operator">/*</span> <span class="variable">error</span> <span class="operator">*/</span>
+ 
+ <span class="regex">/* A certificate does not need to be specified when using raw public keys */</span>
+ <span class="keyword">if</span> <span class="operator">(!</span><span class="variable">SSL_use_PrivateKey</span><span class="operator">(</span><span class="variable">ssl</span><span class="operator">,</span> <span class="variable">rpk</span><span class="operator">))</span>
+     <span class="operator">/*</span> <span class="variable">error</span> <span class="operator">*/</span>
+ 
+ <span class="regex">/* Perform SSL_accept() operations */</span>
+</code></pre>
+
+<p>To connect to this server, set the client SSL_CTX and SSL as follows:</p>
+
+<pre><code> <span class="regex">/* Connect function */</span>
+ 
+ <span class="variable">SSL_CTX</span> <span class="variable">*ctx</span><span class="operator">;</span>
+ <span class="variable">SSL</span> <span class="variable">*ssl</span><span class="operator">;</span>
+ <span class="variable">const</span> <span class="variable">char</span> <span class="variable">*dane_tlsa_domain</span> <span class="operator">=</span> <span class="string">"smtp.example.com"</span><span class="operator">;</span>
+ <span class="variable">unsigned</span> <span class="variable">char</span> <span class="variable">cert_type</span><span class="operator">[]</span> <span class="operator">=</span> <span class="operator">{</span> <span class="variable">TLSEXT_cert_type_rpk</span><span class="operator">,</span> <span class="variable">TLSEXT_cert_type_x509</span> <span class="operator">}</span><span class="operator">;</span>
+ <span class="variable">EVP_PKEY</span> <span class="variable">*rpk</span><span class="operator">;</span>
+ <span class="keyword">int</span> <span class="variable">verify_result</span><span class="operator">;</span>
+ 
+ <span class="regex">/* Assign rpk to an EVP_PKEY from a file or other means */</span>
+ 
+ <span class="keyword">if</span> <span class="operator">((</span><span class="variable">ctx</span> <span class="operator">=</span> <span class="variable">SSL_CTX_new</span><span class="operator">(</span><span class="variable">TLS_client_method</span><span class="operator">()))</span> <span class="operator">==</span> <span class="variable">NULL</span><span class="operator">)</span>
+     <span class="operator">/*</span> <span class="variable">error</span> <span class="operator">*/</span>
+ <span class="keyword">if</span> <span class="operator">(</span><span class="variable">SSL_CTX_dane_enable</span><span class="operator">(</span><span class="variable">ctx</span><span class="operator">)</span> <span class="operator">&lt;=</span> <span class="number">0</span><span class="operator">)</span>
+     <span class="operator">/*</span> <span class="variable">error</span> <span class="operator">*/</span>
+ <span class="keyword">if</span> <span class="operator">((</span><span class="variable">ssl</span> <span class="operator">=</span> <span class="variable">SSL_new</span><span class="operator">(</span><span class="variable">ctx</span><span class="operator">))</span> <span class="operator">==</span> <span class="variable">NULL</span><span class="operator">)</span>
+     <span class="operator">/*</span> <span class="variable">error</span> <span class="operator">*/</span>
+ <span class="regex">/*
+  * The `dane_tlsa_domain` arguments sets the default SNI hostname.
+  * It may be set to NULL when enabling DANE on the server side.
+  */</span>
+ <span class="keyword">if</span> <span class="operator">(</span><span class="variable">SSL_dane_enable</span><span class="operator">(</span><span class="variable">ssl</span><span class="operator">,</span> <span class="variable">dane_tlsa_domain</span><span class="operator">)</span> <span class="operator">&lt;=</span> <span class="number">0</span><span class="operator">)</span>
+     <span class="operator">/*</span> <span class="variable">error</span> <span class="operator">*/</span>
+ <span class="keyword">if</span> <span class="operator">(!</span><span class="variable">SSL_set1_server_cert_type</span><span class="operator">(</span><span class="variable">ssl</span><span class="operator">,</span> <span class="variable">cert_type</span><span class="operator">,</span> <span class="variable">sizeof</span><span class="operator">(</span><span class="variable">cert_type</span><span class="operator">)))</span>
+     <span class="operator">/*</span> <span class="variable">error</span> <span class="operator">*/</span>
+ <span class="keyword">if</span> <span class="operator">(!</span><span class="variable">SSL_add_expected_rpk</span><span class="operator">(</span><span class="variable">ssl</span><span class="operator">,</span> <span class="variable">rpk</span><span class="operator">))</span>
+     <span class="operator">/*</span> <span class="variable">error</span> <span class="operator">*/</span>
+ 
+ <span class="regex">/* Do SSL_connect() handshake and handle errors here */</span>
+ 
+ <span class="operator">/*</span> <span class="variable">Optional</span><span class="operator">:</span> <span class="variable">verify</span> <span class="variable">the</span> <span class="variable">peer</span> <span class="variable">RPK</span> <span class="operator">*/</span>
+ <span class="variable">verify_result</span> <span class="operator">=</span> <span class="variable">SSL_get_verify_result</span><span class="operator">(</span><span class="variable">ssl</span><span class="operator">);</span>
+ <span class="keyword">if</span> <span class="operator">(</span><span class="variable">verify_result</span> <span class="operator">==</span> <span class="variable">X509_V_OK</span><span class="operator">)</span> <span class="operator">{</span>
+     <span class="regex">/* The server's raw public key matched the TLSA record */</span>
+ <span class="operator">}</span> <span class="keyword">else</span> <span class="keyword">if</span> <span class="operator">(</span><span class="variable">verify_result</span> <span class="operator">==</span> <span class="variable">X509_V_ERR_DANE_NO_MATCH</span><span class="operator">)</span> <span class="operator">{</span>
+     <span class="regex">/*
+      * The server's raw public key, or public key in certificate, did not
+      * match the TLSA record
+      */</span>
+ <span class="operator">}</span> <span class="keyword">else</span> <span class="keyword">if</span> <span class="operator">(</span><span class="variable">verify_result</span> <span class="operator">==</span> <span class="variable">X509_V_ERR_RPK_UNTRUSTED</span><span class="operator">)</span> <span class="operator">{</span>
+     <span class="regex">/*
+      * No TLSA records of the correct type are available to verify the
+      * server's raw public key. This would not happen in this example,
+      * as a TLSA record is configured.
+      */</span>
+ <span class="operator">}</span> <span class="keyword">else</span> <span class="operator">{</span>
+     <span class="regex">/* Some other verify error */</span>
+ <span class="operator">}</span>
+</code></pre>
+
+<p>To validate client raw public keys, code from the client example may need to be incorporated into the server side.</p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="../man3/SSL_get0_peer_rpk.html">SSL_get0_peer_rpk(3)</a>, <a href="../man3/SSL_get_negotiated_client_cert_type.html">SSL_get_negotiated_client_cert_type(3)</a>, <a href="../man3/SSL_get_negotiated_server_cert_type.html">SSL_get_negotiated_server_cert_type(3)</a>, <a href="../man3/SSL_use_certificate.html">SSL_use_certificate(3)</a></p>
+
+<h1 id="HISTORY">HISTORY</h1>
+
+<p>These functions were added in OpenSSL 3.2.</p>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright 2023 The OpenSSL Project Authors. All Rights Reserved.</p>
+
+
+</body>
+
+</html>
+
+

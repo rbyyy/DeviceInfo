@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "duilib", "..\ThirdParty\NIM
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DOBase", "..\DOBase\DOBase.vcxproj", "{FF0AA401-6150-4648-BD9B-DD0FB115CFD4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AMDUtils", "..\AMDUtils\AMDUtils.vcxproj", "{7454B1C4-11C6-41F2-992F-33F2020E113A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -53,6 +55,14 @@ Global
 		{FF0AA401-6150-4648-BD9B-DD0FB115CFD4}.Release|x64.Build.0 = Release|x64
 		{FF0AA401-6150-4648-BD9B-DD0FB115CFD4}.Release|x86.ActiveCfg = Release|Win32
 		{FF0AA401-6150-4648-BD9B-DD0FB115CFD4}.Release|x86.Build.0 = Release|Win32
+		{7454B1C4-11C6-41F2-992F-33F2020E113A}.Debug|x64.ActiveCfg = Debug|x64
+		{7454B1C4-11C6-41F2-992F-33F2020E113A}.Debug|x64.Build.0 = Debug|x64
+		{7454B1C4-11C6-41F2-992F-33F2020E113A}.Debug|x86.ActiveCfg = Debug|Win32
+		{7454B1C4-11C6-41F2-992F-33F2020E113A}.Debug|x86.Build.0 = Debug|Win32
+		{7454B1C4-11C6-41F2-992F-33F2020E113A}.Release|x64.ActiveCfg = Release|x64
+		{7454B1C4-11C6-41F2-992F-33F2020E113A}.Release|x64.Build.0 = Release|x64
+		{7454B1C4-11C6-41F2-992F-33F2020E113A}.Release|x86.ActiveCfg = Release|Win32
+		{7454B1C4-11C6-41F2-992F-33F2020E113A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

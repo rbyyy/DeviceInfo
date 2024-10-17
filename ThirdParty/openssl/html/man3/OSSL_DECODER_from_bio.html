@@ -1,0 +1,137 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>OSSL_DECODER_from_bio</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#RETURN-VALUES">RETURN VALUES</a></li>
+  <li><a href="#EXAMPLES">EXAMPLES</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+  <li><a href="#HISTORY">HISTORY</a></li>
+  <li><a href="#COPYRIGHT">COPYRIGHT</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<p>OSSL_DECODER_from_data, OSSL_DECODER_from_bio, OSSL_DECODER_from_fp - Routines to perform a decoding</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code> <span class="comment">#include &lt;openssl/decoder.h&gt;</span>
+ 
+ <span class="keyword">int</span> <span class="variable">OSSL_DECODER_from_bio</span><span class="operator">(</span><span class="variable">OSSL_DECODER_CTX</span> <span class="variable">*ctx</span><span class="operator">,</span> <span class="variable">BIO</span> <span class="variable">*in</span><span class="operator">);</span>
+ <span class="keyword">int</span> <span class="variable">OSSL_DECODER_from_fp</span><span class="operator">(</span><span class="variable">OSSL_DECODER_CTX</span> <span class="variable">*ctx</span><span class="operator">,</span> <span class="variable">FILE</span> <span class="variable">*fp</span><span class="operator">);</span>
+ <span class="keyword">int</span> <span class="variable">OSSL_DECODER_from_data</span><span class="operator">(</span><span class="variable">OSSL_DECODER_CTX</span> <span class="variable">*ctx</span><span class="operator">,</span> <span class="variable">const</span> <span class="variable">unsigned</span> <span class="variable">char</span> <span class="operator">**</span><span class="variable">pdata</span><span class="operator">,</span>
+                            <span class="variable">size_t</span> <span class="variable">*pdata_len</span><span class="operator">);</span>
+</code></pre>
+
+<p>Feature availability macros:</p>
+
+<dl>
+
+<dt id="OSSL_DECODER_from_fp-is-only-available-when-OPENSSL_NO_STDIO-is-undefined">OSSL_DECODER_from_fp() is only available when <b>OPENSSL_NO_STDIO</b> is undefined.</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>OSSL_DECODER_from_data() runs the decoding process for the context <i>ctx</i>, with input coming from <i>*pdata</i>, <i>*pdata_len</i> bytes long. Both <i>*pdata</i> and <i>*pdata_len</i> must be non-NULL. When OSSL_DECODER_from_data() returns, <i>*pdata</i> is updated to point at the location after what has been decoded, and <i>*pdata_len</i> to have the number of remaining bytes.</p>
+
+<p>OSSL_DECODER_from_bio() runs the decoding process for the context <i>ctx</i>, with the input coming from the <b>BIO</b> <i>in</i>. Should it make a difference, it&#39;s recommended to have the BIO set in binary mode rather than text mode.</p>
+
+<p>OSSL_DECODER_from_fp() does the same thing as OSSL_DECODER_from_bio(), except that the input is coming from the <b>FILE</b> <i>fp</i>.</p>
+
+<h1 id="RETURN-VALUES">RETURN VALUES</h1>
+
+<p>OSSL_DECODER_from_bio(), OSSL_DECODER_from_data() and OSSL_DECODER_from_fp() return 1 on success, or 0 on failure.</p>
+
+<h1 id="EXAMPLES">EXAMPLES</h1>
+
+<p>To decode an RSA key encoded with PEM from a bio:</p>
+
+<pre><code> <span class="variable">OSSL_DECODER_CTX</span> <span class="variable">*dctx</span><span class="operator">;</span>
+ <span class="variable">EVP_PKEY</span> <span class="variable">*pkey</span> <span class="operator">=</span> <span class="variable">NULL</span><span class="operator">;</span>
+ <span class="variable">const</span> <span class="variable">char</span> <span class="variable">*format</span> <span class="operator">=</span> <span class="string">"PEM"</span><span class="operator">;</span>   <span class="regex">/* NULL for any format */</span>
+ <span class="variable">const</span> <span class="variable">char</span> <span class="variable">*structure</span> <span class="operator">=</span> <span class="variable">NULL</span><span class="operator">;</span> <span class="regex">/* any structure */</span>
+ <span class="variable">const</span> <span class="variable">char</span> <span class="variable">*keytype</span> <span class="operator">=</span> <span class="string">"RSA"</span><span class="operator">;</span>  <span class="regex">/* NULL for any key */</span>
+ <span class="variable">const</span> <span class="variable">unsigned</span> <span class="variable">char</span> <span class="variable">*pass</span> <span class="operator">=</span> <span class="string">"my password"</span><span class="operator">;</span>
+ 
+ <span class="variable">dctx</span> <span class="operator">=</span> <span class="variable">OSSL_DECODER_CTX_new_for_pkey</span><span class="operator">(&amp;</span><span class="variable">pkey</span><span class="operator">,</span> <span class="keyword">format</span><span class="operator">,</span> <span class="variable">structure</span><span class="operator">,</span>
+                                      <span class="variable">keytype</span><span class="operator">,</span>
+                                      <span class="variable">OSSL_KEYMGMT_SELECT_KEYPAIR</span><span class="operator">,</span>
+                                      <span class="variable">NULL</span><span class="operator">,</span> <span class="variable">NULL</span><span class="operator">);</span>
+ <span class="keyword">if</span> <span class="operator">(</span><span class="variable">dctx</span> <span class="operator">==</span> <span class="variable">NULL</span><span class="operator">)</span> <span class="operator">{</span>
+     <span class="regex">/* error: no suitable potential decoders found */</span>
+ <span class="operator">}</span>
+ <span class="keyword">if</span> <span class="operator">(</span><span class="variable">pass</span> <span class="operator">!=</span> <span class="variable">NULL</span><span class="operator">)</span>
+     <span class="variable">OSSL_DECODER_CTX_set_passphrase</span><span class="operator">(</span><span class="variable">dctx</span><span class="operator">,</span> <span class="variable">pass</span><span class="operator">,</span> <span class="variable">strlen</span><span class="operator">(</span><span class="variable">pass</span><span class="operator">));</span>
+ <span class="keyword">if</span> <span class="operator">(</span><span class="variable">OSSL_DECODER_from_bio</span><span class="operator">(</span><span class="variable">dctx</span><span class="operator">,</span> <span class="variable">bio</span><span class="operator">))</span> <span class="operator">{</span>
+     <span class="regex">/* pkey is created with the decoded data from the bio */</span>
+ <span class="operator">}</span> <span class="keyword">else</span> <span class="operator">{</span>
+     <span class="regex">/* decoding failure */</span>
+ <span class="operator">}</span>
+ <span class="variable">OSSL_DECODER_CTX_free</span><span class="operator">(</span><span class="variable">dctx</span><span class="operator">);</span>
+</code></pre>
+
+<p>To decode an EC key encoded with DER from a buffer:</p>
+
+<pre><code> <span class="variable">OSSL_DECODER_CTX</span> <span class="variable">*dctx</span><span class="operator">;</span>
+ <span class="variable">EVP_PKEY</span> <span class="variable">*pkey</span> <span class="operator">=</span> <span class="variable">NULL</span><span class="operator">;</span>
+ <span class="variable">const</span> <span class="variable">char</span> <span class="variable">*format</span> <span class="operator">=</span> <span class="string">"DER"</span><span class="operator">;</span>   <span class="regex">/* NULL for any format */</span>
+ <span class="variable">const</span> <span class="variable">char</span> <span class="variable">*structure</span> <span class="operator">=</span> <span class="variable">NULL</span><span class="operator">;</span> <span class="regex">/* any structure */</span>
+ <span class="variable">const</span> <span class="variable">char</span> <span class="variable">*keytype</span> <span class="operator">=</span> <span class="string">"EC"</span><span class="operator">;</span>   <span class="regex">/* NULL for any key */</span>
+ <span class="variable">const</span> <span class="variable">unsigned</span> <span class="variable">char</span> <span class="variable">*pass</span> <span class="operator">=</span> <span class="variable">NULL</span>
+ <span class="variable">const</span> <span class="variable">unsigned</span> <span class="variable">char</span> <span class="variable">*data</span> <span class="operator">=</span> <span class="variable">buffer</span><span class="operator">;</span>
+ <span class="variable">size_t</span> <span class="variable">datalen</span> <span class="operator">=</span> <span class="variable">sizeof</span><span class="operator">(</span><span class="variable">buffer</span><span class="operator">);</span>
+ 
+ <span class="variable">dctx</span> <span class="operator">=</span> <span class="variable">OSSL_DECODER_CTX_new_for_pkey</span><span class="operator">(&amp;</span><span class="variable">pkey</span><span class="operator">,</span> <span class="keyword">format</span><span class="operator">,</span> <span class="variable">structure</span><span class="operator">,</span>
+                                      <span class="variable">keytype</span><span class="operator">,</span>
+                                      <span class="variable">OSSL_KEYMGMT_SELECT_KEYPAIR</span>
+                                      <span class="operator">|</span> <span class="variable">OSSL_KEYMGMT_SELECT_DOMAIN_PARAMETERS</span><span class="operator">,</span>
+                                      <span class="variable">NULL</span><span class="operator">,</span> <span class="variable">NULL</span><span class="operator">);</span>
+ <span class="keyword">if</span> <span class="operator">(</span><span class="variable">dctx</span> <span class="operator">==</span> <span class="variable">NULL</span><span class="operator">)</span> <span class="operator">{</span>
+     <span class="regex">/* error: no suitable potential decoders found */</span>
+ <span class="operator">}</span>
+ <span class="keyword">if</span> <span class="operator">(</span><span class="variable">pass</span> <span class="operator">!=</span> <span class="variable">NULL</span><span class="operator">)</span>
+     <span class="variable">OSSL_DECODER_CTX_set_passphrase</span><span class="operator">(</span><span class="variable">dctx</span><span class="operator">,</span> <span class="variable">pass</span><span class="operator">,</span> <span class="variable">strlen</span><span class="operator">(</span><span class="variable">pass</span><span class="operator">));</span>
+ <span class="keyword">if</span> <span class="operator">(</span><span class="variable">OSSL_DECODER_from_data</span><span class="operator">(</span><span class="variable">dctx</span><span class="operator">,</span> <span class="operator">&amp;</span><span class="variable">data</span><span class="operator">,</span> <span class="operator">&amp;</span><span class="variable">datalen</span><span class="operator">))</span> <span class="operator">{</span>
+     <span class="regex">/* pkey is created with the decoded data from the buffer */</span>
+ <span class="operator">}</span> <span class="keyword">else</span> <span class="operator">{</span>
+     <span class="regex">/* decoding failure */</span>
+ <span class="operator">}</span>
+ <span class="variable">OSSL_DECODER_CTX_free</span><span class="operator">(</span><span class="variable">dctx</span><span class="operator">);</span>
+</code></pre>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p><a href="../man7/provider.html">provider(7)</a>, <a href="../man3/OSSL_DECODER_CTX.html">OSSL_DECODER_CTX(3)</a></p>
+
+<h1 id="HISTORY">HISTORY</h1>
+
+<p>The functions described here were added in OpenSSL 3.0.</p>
+
+<h1 id="COPYRIGHT">COPYRIGHT</h1>
+
+<p>Copyright 2020-2023 The OpenSSL Project Authors. All Rights Reserved.</p>
+
+<p>Licensed under the Apache License 2.0 (the &quot;License&quot;). You may not use this file except in compliance with the License. You can obtain a copy in the file LICENSE in the source distribution or at <a href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</a>.</p>
+
+
+</body>
+
+</html>
+
+

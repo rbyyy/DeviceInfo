@@ -11,9 +11,7 @@ class DLL_API TestRequest : public DOBaseRequest
 {
 public:
 	TestRequest();
-	virtual ~TestRequest() {
-		int a = 1;
-	};
+	virtual ~TestRequest() {};
 
 	std::string Method() override;
 	std::string Url() override;
