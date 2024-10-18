@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
-#include "duilib/UIlib.h"
-//#include "framework.h"
+#include "framework.h"
 
 class AppMainWindow : public ui::WindowImplBase
 {

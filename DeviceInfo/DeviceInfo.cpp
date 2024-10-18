@@ -2,8 +2,8 @@
 //
 
 #include "framework.h"
-#include "DeviceInfo.h"
 #include "AppMainWindow.h"
+#include "DeviceInfo.h"
 #include <thread>
 #include <future>
 #include <iostream>
