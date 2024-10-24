@@ -28,7 +28,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     MainThread mainThread;
-    //std::thread::id curId = std::this_thread::get_id();
+	
+    std::thread::id curId = std::this_thread::get_id();
     unsigned long tId = GetCurrentThreadId();
     std::cout << "tid result: " << tId << std::endl;
 

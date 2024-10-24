@@ -152,6 +152,9 @@
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AMDUtils\AMDUtils.vcxproj">
+      <Project>{7454b1c4-11c6-41f2-992f-33f2020e113a}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\DOBase\DOBase.vcxproj">
       <Project>{ff0aa401-6150-4648-bd9b-dd0fb115cfd4}</Project>
     </ProjectReference>

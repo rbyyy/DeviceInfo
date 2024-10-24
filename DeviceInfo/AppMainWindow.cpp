@@ -5,6 +5,7 @@
 #include "../DOBase/TestRequest.h"
 #include "../DOBase/DOHttpManager.h"
 #include "../DOBase/DOStringUtil.h"
+#include "../AMDUtils/CPUInfo.h"
 
 const std::wstring AppMainWindow::kClassName = L"AppMainWindow";
 
@@ -60,11 +61,21 @@ void AppMainWindow::SetLabelContent(std::wstring& text)
 void AppMainWindow::OnBtnTestClick(ui::EventArgs* args)
 {
     char ch = DOStringUtil::ToUpper('b');
+    std::thread::id curId = std::this_thread::get_id();
+    
     std::thread([]() {
+        std::thread::id curIdOne = std::this_thread::get_id();
+		/*std::wstringstream wss;
+		wss << L"Button clicked";*/
+		/*MessageBox(NULL, wss.str().c_str(), L"Info", MB_OK);*/
+
+        nbase::ThreadManager::PostTask(0, []() {
+            std::thread::id curId = std::this_thread::get_id();
+            std::wstringstream wss;
+            wss << L"Button clicked";
+            MessageBox(NULL, wss.str().c_str(), L"Info", MB_OK);
+            });
         
-		std::wstringstream wss;
-		wss << L"Button clicked";
-		MessageBox(NULL, wss.str().c_str(), L"Info", MB_OK);
     }).detach();
     
     
