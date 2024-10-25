@@ -158,6 +158,9 @@
     <ProjectReference Include="..\DOBase\DOBase.vcxproj">
       <Project>{ff0aa401-6150-4648-bd9b-dd0fb115cfd4}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\OSOperUtils\OSOperUtils.vcxproj">
+      <Project>{7d5552ba-f62a-4e8a-89f7-f77c33127523}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\ThirdParty\NIM_Duilib_Framework\base\base.vcxproj">
       <Project>{8d9a6595-717a-41c8-b468-0011a72be3d1}</Project>
     </ProjectReference>

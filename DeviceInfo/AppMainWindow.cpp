@@ -6,6 +6,7 @@
 #include "../DOBase/DOHttpManager.h"
 #include "../DOBase/DOStringUtil.h"
 #include "../AMDUtils/CPUInfo.h"
+#include "../OSOperUtils/PersonalizationCustom.h"
 
 const std::wstring AppMainWindow::kClassName = L"AppMainWindow";
 
@@ -60,6 +61,11 @@ void AppMainWindow::SetLabelContent(std::wstring& text)
 
 void AppMainWindow::OnBtnTestClick(ui::EventArgs* args)
 {
+    PersonalizationCustom psc;
+	//psc.GetPersonalizationThemeMode();
+
+	psc.SetPersonalizationThemeMode(0);
+
     char ch = DOStringUtil::ToUpper('b');
     std::thread::id curId = std::this_thread::get_id();
     
