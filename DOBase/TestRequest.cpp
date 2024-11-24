@@ -1,5 +1,6 @@
 #include "TestRequest.h"
 #include "../ThirdParty/cpp-httplib/httplib.h"
+#include "DOLog.h"
 
 TestRequest::TestRequest()
 {
@@ -13,6 +14,8 @@ std::string TestRequest::Method()
 
 std::string TestRequest::Url()
 {
+	unsigned long tId = GetCurrentThreadId();
+	LOG_INFO("1233tid result: {}", tId);
 	return "http://cpp-httplib-server.yhirose.repl.co";
 }
 
@@ -30,7 +33,7 @@ void TestRequest::Test()
 			printf("%s\n", res->body.c_str());
 		}
 		unsigned long tId = GetCurrentThreadId();
-		std::cout << "1233tid result: " << tId << std::endl;
+		LOG_INFO("1233tid result: {}", tId);
 		//PostAppMessage(tId, 100024, 0, 0);
 		Sleep(3000);
 		if (m_Callback)

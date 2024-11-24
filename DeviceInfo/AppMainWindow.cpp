@@ -68,6 +68,8 @@ void AppMainWindow::OnBtnTestClick(ui::EventArgs* args)
 
     char ch = DOStringUtil::ToUpper('b');
     std::thread::id curId = std::this_thread::get_id();
+    unsigned long intCurId = *(unsigned long*)&curId;
+	unsigned long tId = GetCurrentThreadId();
     
     std::thread([]() {
         std::thread::id curIdOne = std::this_thread::get_id();
@@ -90,21 +92,21 @@ void AppMainWindow::OnBtnTestClick(ui::EventArgs* args)
 	//wss << L"Button clicked";
 	//m_pLabel->SetText(wss.str().c_str());
 	//MessageBox(m_hWnd, wss.str().c_str(), L"Info", MB_OK);
-    for (size_t i = 0; i < 2; i++)
-    {
+    //for (size_t i = 0; i < 2; i++)
+    //{
         TestRequest* testRequest = new TestRequest();
 		long long ptr = (long long)testRequest;
 		OutputDebugStringW(std::to_wstring(ptr).c_str());
 
-       /* DOHttpManager::GetInstance()->HttpRequest(testRequest, [=](int code, std::string res, std::string error) {
+        DOHttpManager::GetInstance()->HttpRequest(testRequest, [=](int code, std::string res, std::string error) {
             unsigned long tId = GetCurrentThreadId();
             std::wstring wres(res.begin(), res.end());
             this->SetLabelContent(wres);
             long long ptr = (long long)testRequest;
             OutputDebugStringW(std::to_wstring(ptr).c_str());
             delete testRequest;
-        });*/
-    }
+        });
+    //}
     
 
 	/*m_vecTestRequest.push(testRequest);

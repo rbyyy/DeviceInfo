@@ -1,7 +1,7 @@
 #pragma once
 #include "DOBaseAPI.h"
 
-class DLL_API DOStringUtil
+class DO_BASE_API DOStringUtil
 {
 public:
 	static int ToUpper(int c);

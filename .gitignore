@@ -34,3 +34,6 @@
 # Bin directory
 /bin
 DeviceInfo/.vs
+
+# log
+*.log

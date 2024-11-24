@@ -76,7 +76,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)..\bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)..\bin\tmp\$(Configuration)_$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)..\cpp-httplib;$(IncludePath)</IncludePath>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -120,7 +120,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\ThirdParty\openssl332\include;$(SolutionDir)..\ThirdParty\zlib131\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\ThirdParty\openssl332\include;$(SolutionDir)..\ThirdParty\zlib131\build\include;$(SolutionDir)..\ThirdParty\cpp-httplib;$(SolutionDir)..\ThirdParty\spdlog1141\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -154,6 +154,7 @@
     <ClInclude Include="DOBaseAPI.h" />
     <ClInclude Include="DOBaseRequest.h" />
     <ClInclude Include="DOHttpManager.h" />
+    <ClInclude Include="DOLog.h" />
     <ClInclude Include="DOStringUtil.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
@@ -162,6 +163,7 @@
   <ItemGroup>
     <ClCompile Include="DOBaseRequest.cpp" />
     <ClCompile Include="DOHttpManager.cpp" />
+    <ClCompile Include="DOLog.cpp" />
     <ClCompile Include="DOStringUtil.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

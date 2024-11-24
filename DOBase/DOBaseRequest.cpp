@@ -1,7 +1,7 @@
 #include "DOBaseRequest.h"
 #include <assert.h>
 #include <algorithm>
-#include "../ThirdParty/cpp-httplib/httplib.h"
+#include "httplib.h"
 
 DOBaseRequest::DOBaseRequest()
 {

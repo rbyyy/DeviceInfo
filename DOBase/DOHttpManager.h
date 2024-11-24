@@ -8,7 +8,7 @@
 
 #include "DOBaseRequest.h"
 
-class DLL_API DOHttpManager
+class DO_BASE_API DOHttpManager
 {
 public:
 	static DOHttpManager* GetInstance();

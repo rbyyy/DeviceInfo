@@ -7,7 +7,7 @@
 
 typedef void(*IntCallback)(int);
 
-class DLL_API TestRequest : public DOBaseRequest
+class DO_BASE_API TestRequest : public DOBaseRequest
 {
 public:
 	TestRequest();

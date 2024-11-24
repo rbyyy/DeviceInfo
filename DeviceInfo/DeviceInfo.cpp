@@ -7,6 +7,7 @@
 #include <thread>
 #include <future>
 #include <iostream>
+#include "../DOBase/DOLog.h"
 
 enum ThreadId
 {
@@ -26,6 +27,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
+
+    wchar_t szCurPath[MAX_PATH] = L"D:\\Path";
+    GetCurrentDirectory(sizeof(szCurPath), szCurPath);
+	std::wstring curPath = szCurPath;
+	DOBase::InitLogging(nbase::UTF16ToUTF8(curPath));
+    for (size_t i = 0; i < 10000; i++)
+    {
+        LOG_INFO("12345678");
+    }
+    
 
     MainThread mainThread;
 	
