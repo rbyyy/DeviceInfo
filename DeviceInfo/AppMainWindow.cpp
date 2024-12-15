@@ -39,12 +39,12 @@ std::wstring AppMainWindow::GetWindowClassName() const
 
 void AppMainWindow::InitWindow()
 {
-	m_pLabel = static_cast<ui::Label*>(FindControl(L"tooltip"));
+	/*m_pLabel = static_cast<ui::Label*>(FindControl(L"tooltip"));
 	m_pBtnTest = static_cast<ui::Button*>(FindControl(L"btn_request"));
     m_pBtnTest->AttachClick([this](ui::EventArgs* args) {
 		OnBtnTestClick(args);
         return true;
-    });
+    });*/
 }
 
 LRESULT AppMainWindow::OnClose(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)

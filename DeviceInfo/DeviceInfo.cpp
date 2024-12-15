@@ -76,7 +76,7 @@ void MainThread::Init()
     if (nullptr != m_pMainWindow)
     {
         m_pMainWindow->Create(NULL, AppMainWindow::kClassName.c_str(), WS_OVERLAPPEDWINDOW & ~WS_MAXIMIZEBOX, 0);
-        m_pMainWindow->CenterWindow();
+        //m_pMainWindow->CenterWindow();
         m_pMainWindow->ShowWindow();
     }
 }
